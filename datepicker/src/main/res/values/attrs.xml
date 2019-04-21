@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <declare-styleable name="DatePickerTimeline" tools:ignore="ResourceName">
+        <attr name="monthTextColor" format="color"/>
+        <attr name="dateTextColor" format="color"/>
+        <attr name="dayTextColor" format="color" />
+        <!--<attr name="selectionBackgroundColor" format="color"/>-->
+        <!--<attr name="monthTextSize" format="dimension"/>-->
+        <!--<attr name="dateTextSize" format="dimension"/>-->
+        <!--<attr name="dayTextSize" format="dimension"/>-->
+    </declare-styleable>
+</resources>
