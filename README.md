@@ -1,6 +1,8 @@
 # DatePickerTimeline
 An android package that provides a horizontal date picker
 
+[ ![Download](https://api.bintray.com/packages/iamvivekkaushik/DatePickerLibrary/datePickerTimeline/images/download.svg) ](https://bintray.com/iamvivekkaushik/DatePickerLibrary/datePickerTimeline/_latestVersion)
+
 <img src="/screenshots/datePicker.png" alt="DatePicker Logo" />
 
 ## Usage

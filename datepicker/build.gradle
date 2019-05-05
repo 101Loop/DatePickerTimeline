@@ -1,4 +1,24 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release' // must be applied after your artifact generating plugin (eg. java / com.android.library)
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.8.0'
+    }
+}
+
+publish {
+    userOrg = 'iamvivekkaushik'
+    repoName = 'DatePickerLibrary'
+    groupId = 'com.vivekkaushik.datepicker'
+    artifactId = 'datePickerTimeline'
+    publishVersion = '0.0.1'
+    desc = 'An android package that provides a Horizontal Date Picker.'
+    website = 'https://github.com/101Loop/DatePickerTimeline'
+}
 
 android {
     compileSdkVersion 28
