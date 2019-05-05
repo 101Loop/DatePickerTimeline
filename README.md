@@ -69,7 +69,12 @@ LIMITATIONS
 -----
 
 * Text Size currently can't be changed
-* This library is currently in its initial state, there are a lot of features that can be added to this library.
+
+
+FIXES
+-----
+* This project is using androidX artifacts make sure you have migrated your project to androidX.
+* If Preview dosen't show up in android Studio then make sure you have added android recycler view.
 
 
 Creator
