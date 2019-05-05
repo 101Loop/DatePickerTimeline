@@ -5,6 +5,17 @@ An android package that provides a horizontal date picker
 
 <img src="/screenshots/datePicker.png" alt="DatePicker Logo" />
 
+## Gradle
+
+In your module (app-level) Gradle file (usually `app/build.gradle`), Add this line inside the `dependencies` block.
+
+```
+dependencies {
+    ...
+    implementation 'com.vivekkaushik.datepicker:datePickerTimeline:0.0.1'
+}
+```
+
 ## Usage
 Add `DatePickerTimeline` View to your layout file
 
