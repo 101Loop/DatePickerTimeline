@@ -12,7 +12,7 @@ In your module (app-level) Gradle file (usually `app/build.gradle`), Add this li
 ```
 dependencies {
     ...
-    implementation 'com.vivekkaushik.datepicker:datePickerTimeline:0.0.1'
+    implementation 'com.vivekkaushik.datepicker:datePickerTimeline:0.0.2'
 }
 ```
 
