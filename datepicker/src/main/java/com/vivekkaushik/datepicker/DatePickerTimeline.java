@@ -52,6 +52,7 @@ public class DatePickerTimeline extends LinearLayout {
 //        timelineView.setDateTextSize(a.getDimension(R.styleable.DatePickerTimeline_dateTextSize, getResources().getDimension(R.dimen.dateTextSize)));
 //        timelineView.setDayTextSize(a.getDimension(R.styleable.DatePickerTimeline_dayTextSize, getResources().getDimension(R.dimen.dayTextSize)));
 
+        timelineView.deactivateDates(new Date[0]);
         a.recycle();
         timelineView.invalidate();
     }
