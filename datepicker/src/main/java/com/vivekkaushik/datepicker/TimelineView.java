@@ -10,10 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.vivekkaushik.datepicker.adapter.TimelineAdapter;
 
+import java.util.Date;
+
 public class TimelineView extends RecyclerView {
     private TimelineAdapter adapter;
 
-    private int monthTextColor, dateTextColor, dayTextColor, selectedColor;
+    private int monthTextColor, dateTextColor, dayTextColor, selectedColor, disabledColor;
 //    private float monthTextSize, dateTextSize, dayTextSize;
     private int year, month, date;
 
@@ -67,6 +69,14 @@ public class TimelineView extends RecyclerView {
         this.dayTextColor = color;
     }
 
+    public void setDisabledDateColor(int color) {
+        this.disabledColor = color;
+    }
+
+    public int getDisabledDateColor() {
+        return disabledColor;
+    };
+
     public int getSelectedColor() {
         return selectedColor;
     }
@@ -96,5 +106,9 @@ public class TimelineView extends RecyclerView {
         this.month = month;
         this.date = date;
         invalidate();
+    }
+
+    public void deactivateDates(Date[] deactivatedDates) {
+        adapter.disableDates(deactivatedDates);
     }
 }

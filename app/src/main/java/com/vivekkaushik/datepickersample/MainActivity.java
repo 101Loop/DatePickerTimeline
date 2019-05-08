@@ -9,6 +9,9 @@ import android.util.Log;
 import com.vivekkaushik.datepicker.DatePickerTimeline;
 import com.vivekkaushik.datepicker.OnDateSelectedListener;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
@@ -23,7 +26,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDateSelected(int year, int month, int day, int dayOfWeek) {
                 //Do Something
+                Log.d(TAG, "onDateSelected: " + day);
+            }
+
+            @Override
+            public void onDisabledDateSelected(int year, int month, int day, int dayOfWeek, boolean isDisabled) {
+                Log.d(TAG, "onDisabledDateSelected: " + day);
             }
         });
+
+        Date[] dates = {Calendar.getInstance().getTime()};
+        datePickerTimeline.deactivateDates(dates);
     }
 }

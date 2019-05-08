@@ -46,6 +46,7 @@ public class DatePickerTimeline extends LinearLayout {
         timelineView.setDayTextColor(a.getColor(R.styleable.DatePickerTimeline_dayTextColor, getResources().getColor(R.color.black)));
         timelineView.setDateTextColor(a.getColor(R.styleable.DatePickerTimeline_dateTextColor, getResources().getColor(R.color.black)));
         timelineView.setMonthTextColor(a.getColor(R.styleable.DatePickerTimeline_monthTextColor, getResources().getColor(R.color.black)));
+        timelineView.setDisabledDateColor(a.getColor(R.styleable.DatePickerTimeline_disabledColor, getResources().getColor(R.color.grey)));
 
 //        timelineView.setMonthTextSize(a.getDimension(R.styleable.DatePickerTimeline_monthTextSize, getResources().getDimension(R.dimen.monthTextSize)));
 //        timelineView.setDateTextSize(a.getDimension(R.styleable.DatePickerTimeline_dateTextSize, getResources().getDimension(R.dimen.dateTextSize)));
@@ -55,23 +56,62 @@ public class DatePickerTimeline extends LinearLayout {
         timelineView.invalidate();
     }
 
+    /**
+     * Sets the color for date text
+     * @param color the color of the date text
+     */
     public void setDateTextColor(int color) {
         timelineView.setDateTextColor(color);
     }
 
+    /**
+     * Sets the color for day text
+     * @param color the color of the day text
+     */
     public void setDayTextColor(int color) {
         timelineView.setDayTextColor(color);
     }
 
+    /**
+     * Sets the color for month
+     * @param color the color of the month text
+     */
     public void setMonthTextColor(int color) {
         timelineView.setMonthTextColor(color);
     }
 
+    /**
+     * Sets the color for disabled dates
+     * @param color the color of the date
+     */
+    public void setDisabledDateColor(int color) {
+        timelineView.setDisabledDateColor(color);
+    }
+
+    /**
+     * Register a callback to be invoked when a date is selected.
+     * @param listener the callback that will run
+     */
     public void setOnDateSelectedListener(OnDateSelectedListener listener) {
         timelineView.setOnDateSelectedListener(listener);
     }
 
+    /**
+     * Set a Start date for the calendar (Default, 1 Jan 1970)
+     * @param year start year
+     * @param month start month
+     * @param date start date
+     */
     public void setInitialDate(int year, int month, int date) {
         timelineView.setInitialDate(year, month, date);
+    }
+
+    /**
+     * Deactivate dates from the calendar. User won't be able to select
+     * the deactivated date.
+     * @param dates Array of Dates
+     */
+    public void deactivateDates(Date[] dates) {
+        timelineView.deactivateDates(dates);
     }
 }

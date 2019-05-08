@@ -1,5 +1,5 @@
 # DatePickerTimeline
-An android package that provides a horizontal date picker
+An android package that provides a Horizontal Date Picker.
 
 [ ![Download](https://api.bintray.com/packages/iamvivekkaushik/DatePickerLibrary/datePickerTimeline/images/download.svg) ](https://bintray.com/iamvivekkaushik/DatePickerLibrary/datePickerTimeline/_latestVersion)
 
@@ -39,6 +39,7 @@ You can use the following properties in your XML to change your DatePickerTimeli
 * `app:dateTextColor`         (color)   -> default -> Black
 * `app:dayTextColor`          (color)   -> default -> Black
 * `app:monthTextColor`        (color)   -> default -> Black
+* `app:disabledColor`         (color)   -> default -> Grey
 
 JAVA
 -----
@@ -51,9 +52,18 @@ datePickerTimeline.setInitialDate(2019, 3, 21);
 datePickerTimeline.setOnDateSelectedListener(new OnDateSelectedListener() {
     @Override
     public void onDateSelected(int year, int month, int day, int dayOfWeek) {
-        //Do Something
+        // Do Something
+    }
+
+    @Override
+    public void onDisabledDateSelected(int year, int month, int day, int dayOfWeek, boolean isDisabled) {
+        // Do Something
     }
 });
+
+// Disable date
+Date[] dates = {Calendar.getInstance().getTime()};
+datePickerTimeline.deactivateDates(dates);
 ```
 
 You can also use the built in methods to change the text color
@@ -73,11 +83,11 @@ LIMITATIONS
 
 FIXES
 -----
-* This project is using androidX artifacts make sure you have migrated your project to androidX.
+* This project is using AndroidX artifacts make sure you have migrated your project to androidX.
 * If Preview dosen't show up in android Studio then make sure you have added android recycler view.
 
 
-Creator
--------
+Author
+------
 
 * [Vivek Kaushik](http://github.com/iamvivekkaushik/)

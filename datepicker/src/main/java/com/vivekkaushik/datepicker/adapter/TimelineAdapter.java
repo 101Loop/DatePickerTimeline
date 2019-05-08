@@ -1,14 +1,8 @@
 package com.vivekkaushik.datepicker.adapter;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.GradientDrawable;
-import android.text.format.DateUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +14,7 @@ import com.vivekkaushik.datepicker.TimelineView;
 
 import java.text.DateFormatSymbols;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHolder> {
@@ -28,6 +23,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
     private Calendar calendar = Calendar.getInstance();
     private TimelineView timelineView;
+    private Date[] deactivatedDates;
 
     private OnDateSelectedListener listener;
 
@@ -56,19 +52,25 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         final int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        holder.bind(month, day, dayOfWeek, position);
+
+        final boolean isDisabled = holder.bind(month, day, dayOfWeek, year, position);
+
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (selectedView != null) {
                     selectedView.setBackground(null);
                 }
-                v.setBackground(timelineView.getResources().getDrawable(R.drawable.background_shape));
+                if (!isDisabled) {
+                    v.setBackground(timelineView.getResources().getDrawable(R.drawable.background_shape));
 
-                selectedPosition = position;
-                selectedView = v;
+                    selectedPosition = position;
+                    selectedView = v;
 
-                if (listener != null) listener.onDateSelected(year, month, day, dayOfWeek);
+                    if (listener != null) listener.onDateSelected(year, month, day, dayOfWeek);
+                } else {
+                    if (listener != null) listener.onDisabledDateSelected(year, month, day, dayOfWeek, isDisabled);
+                }
             }
         });
     }
@@ -81,6 +83,11 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     @Override
     public int getItemCount() {
         return Integer.MAX_VALUE;
+    }
+
+    public void disableDates(Date[] dates) {
+        this.deactivatedDates = dates;
+        notifyDataSetChanged();
     }
 
     public void setDateSelectedListener(OnDateSelectedListener listener) {
@@ -99,7 +106,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             rootView = itemView.findViewById(R.id.rootView);
         }
 
-        void bind(int month, int day, int dayOfWeek, int position) {
+        boolean bind(int month, int day, int dayOfWeek, int year, int position) {
             monthView.setTextColor(timelineView.getMonthTextColor());
             dateView.setTextColor(timelineView.getDateTextColor());
             dayView.setTextColor(timelineView.getDayTextColor());
@@ -114,6 +121,23 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             } else {
                 rootView.setBackground(null);
             }
+
+            for (Date date : deactivatedDates) {
+                Calendar tempCalendar = Calendar.getInstance();
+                tempCalendar.setTime(date);
+                if (tempCalendar.get(Calendar.DAY_OF_MONTH) == day &&
+                        tempCalendar.get(Calendar.MONTH) == month &&
+                        tempCalendar.get(Calendar.YEAR) == year) {
+                    monthView.setTextColor(timelineView.getDisabledDateColor());
+                    dateView.setTextColor(timelineView.getDisabledDateColor());
+                    dayView.setTextColor(timelineView.getDisabledDateColor());
+
+                    rootView.setBackground(null);
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 

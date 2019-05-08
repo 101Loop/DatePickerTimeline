@@ -4,6 +4,7 @@
         <attr name="monthTextColor" format="color"/>
         <attr name="dateTextColor" format="color"/>
         <attr name="dayTextColor" format="color" />
+        <attr name="disabledColor" format="color" />
         <!--<attr name="selectionBackgroundColor" format="color"/>-->
         <!--<attr name="monthTextSize" format="dimension"/>-->
         <!--<attr name="dateTextSize" format="dimension"/>-->
