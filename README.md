@@ -87,6 +87,13 @@ FIXES
 * If Preview dosen't show up in android Studio then make sure you have added android recycler view.
 
 
+Flutter
+-----
+
+This library is also available for flutter check the github repo [here](https://github.com/iamvivekkaushik/DatePickerTimelineFlutter).
+Also available on [pub.dev](https://pub.dev/packages/date_picker_timeline)
+
+
 Author
 ------
 
