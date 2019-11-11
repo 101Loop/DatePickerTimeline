@@ -1,10 +1,9 @@
 package com.vivekkaushik.datepickersample;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.vivekkaushik.datepicker.DatePickerTimeline;
 import com.vivekkaushik.datepicker.OnDateSelectedListener;
@@ -21,7 +20,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         DatePickerTimeline datePickerTimeline = findViewById(R.id.dateTimeline);
-        datePickerTimeline.setInitialDate(2019, 3, 21);
+        datePickerTimeline.setInitialDate(2019, 10, 12);
+        Calendar date = Calendar.getInstance();
+        date.add(Calendar.DAY_OF_YEAR, 5);
+        datePickerTimeline.setActiveDate(date);
         datePickerTimeline.setOnDateSelectedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(int year, int month, int day, int dayOfWeek) {

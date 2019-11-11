@@ -10,9 +10,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.vivekkaushik.datepicker.adapter.TimelineAdapter;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class TimelineView extends RecyclerView {
+    private static final String TAG = "TimelineView";
     private TimelineAdapter adapter;
 
     private int monthTextColor, dateTextColor, dayTextColor, selectedColor, disabledColor;
@@ -41,7 +45,7 @@ public class TimelineView extends RecyclerView {
         setHasFixedSize(true);
         setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,
                 false));
-        adapter = new TimelineAdapter(this);
+        adapter = new TimelineAdapter(this, -1);
         setAdapter(adapter);
     }
 
@@ -75,7 +79,7 @@ public class TimelineView extends RecyclerView {
 
     public int getDisabledDateColor() {
         return disabledColor;
-    };
+    }
 
     public int getSelectedColor() {
         return selectedColor;
@@ -106,6 +110,24 @@ public class TimelineView extends RecyclerView {
         this.month = month;
         this.date = date;
         invalidate();
+    }
+
+    /**
+     * Calculates the date position and set the selected background on that date
+     * @param activeDate active Date
+     */
+    public void setActiveDate(Calendar activeDate) {
+        try {
+            Date initialDate = new SimpleDateFormat("yyyy-MM-dd")
+                    .parse(year + "-" + (month + 1) + "-" + this.date);
+            long diff =  activeDate.getTime().getTime() - initialDate.getTime();
+            int position = (int) (diff / (1000 * 60 * 60 * 24));
+            adapter.setSelectedPosition(position);
+            invalidate();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void deactivateDates(Date[] deactivatedDates) {

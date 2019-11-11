@@ -15,18 +15,18 @@ publish {
     repoName = 'DatePickerLibrary'
     groupId = 'com.vivekkaushik.datepicker'
     artifactId = 'datePickerTimeline'
-    publishVersion = '0.0.3'
+    publishVersion = '0.0.4'
     desc = 'An android package that provides a Horizontal Date Picker.'
     website = 'https://github.com/101Loop/DatePickerTimeline'
 }
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
 
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 3
         versionName "1.2"
 
@@ -46,9 +46,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }

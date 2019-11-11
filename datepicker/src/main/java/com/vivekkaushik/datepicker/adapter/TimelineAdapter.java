@@ -18,6 +18,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHolder> {
+    private static final String TAG = "TimelineAdapter";
     private static final String[] WEEK_DAYS = DateFormatSymbols.getInstance().getShortWeekdays();
     private static final String[] MONTH_NAME = DateFormatSymbols.getInstance().getShortMonths();
 
@@ -28,10 +29,11 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     private OnDateSelectedListener listener;
 
     private View selectedView;
-    private int selectedPosition = -1;
+    private int selectedPosition;
 
-    public TimelineAdapter(TimelineView timelineView) {
+    public TimelineAdapter(TimelineView timelineView, int selectedPosition) {
         this.timelineView = timelineView;
+        this.selectedPosition = selectedPosition;
     }
 
     @NonNull
@@ -78,6 +80,14 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     private void resetCalendar() {
         calendar.set(timelineView.getYear(), timelineView.getMonth(), timelineView.getDate(),
                 1, 0, 0);
+    }
+
+    /**
+     * Set the position of selected date
+     * @param selectedPosition active date Position
+     */
+    public void setSelectedPosition(int selectedPosition) {
+        this.selectedPosition = selectedPosition;
     }
 
     @Override

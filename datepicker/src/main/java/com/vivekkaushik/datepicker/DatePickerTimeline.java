@@ -5,12 +5,12 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class DatePickerTimeline extends LinearLayout {
@@ -105,6 +105,14 @@ public class DatePickerTimeline extends LinearLayout {
      */
     public void setInitialDate(int year, int month, int date) {
         timelineView.setInitialDate(year, month, date);
+    }
+
+    /**
+     * Set selected background to active date
+     * @param date Active Date
+     */
+    public void setActiveDate(Calendar date) {
+        timelineView.setActiveDate(date);
     }
 
     /**
