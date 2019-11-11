@@ -3,7 +3,8 @@ An android package that provides a Horizontal Date Picker.
 
 [ ![Download](https://api.bintray.com/packages/iamvivekkaushik/DatePickerLibrary/datePickerTimeline/images/download.svg) ](https://bintray.com/iamvivekkaushik/DatePickerLibrary/datePickerTimeline/_latestVersion)
 
-<img src="/screenshots/datePicker.png" alt="DatePicker Logo" />
+<img src="https://github.com/101Loop/DatePickerTimeline/blob/master/screenshots/datePicker.png?raw=true" alt="DatePicker Logo" />
+
 
 ## Gradle
 
@@ -85,6 +86,13 @@ FIXES
 -----
 * This project is using AndroidX artifacts make sure you have migrated your project to androidX.
 * If Preview dosen't show up in android Studio then make sure you have added android recycler view.
+
+
+Flutter
+-----
+
+This library is also available for flutter check the github repo [here](https://github.com/iamvivekkaushik/DatePickerTimelineFlutter).
+Also available on [pub.dev](https://pub.dev/packages/date_picker_timeline)
 
 
 Author
