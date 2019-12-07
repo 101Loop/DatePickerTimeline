@@ -10,7 +10,7 @@ An android package that provides a Horizontal Date Picker.
 
 In your module (app-level) Gradle file (usually `app/build.gradle`), Add this line inside the `dependencies` block.
 
-```
+```java
 dependencies {
     ...
     implementation 'com.vivekkaushik.datepicker:datePickerTimeline:0.0.4'
@@ -20,7 +20,7 @@ dependencies {
 ## Usage
 Add `DatePickerTimeline` View to your layout file
 
-```
+```xml
 <com.vivekkaushik.datepicker.DatePickerTimeline
 android:id="@+id/datePickerTimeline"
 android:layout_width="match_parent"
@@ -45,7 +45,7 @@ You can use the following properties in your XML to change your DatePickerTimeli
 JAVA
 -----
 
-```
+```java
 DatePickerTimeline datePickerTimeline = findViewById(R.id.dateTimeline);
 // Set a Start date (Default, 1 Jan 1970)
 datePickerTimeline.setInitialDate(2019, 3, 21);
@@ -69,7 +69,7 @@ datePickerTimeline.deactivateDates(dates);
 
 You can also use the built in methods to change the text color
 
-```
+```java
 datePickerTimeline.setDateTextColor(Color.RED);
 datePickerTimeline.setDayTextColor(Color.RED);
 datePickerTimeline.setMonthTextColor(Color.RED);
